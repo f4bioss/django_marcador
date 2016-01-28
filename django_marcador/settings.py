@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'django_marcador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config.get('database','DATABASE_NAME'),
         'USER': config.get('database', 'DATABASE_USER'),
         'PASSWORD': config.get('database', 'DATABASE_PASSWORD'),
