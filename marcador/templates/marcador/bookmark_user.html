@@ -1,9 +1,16 @@
 {% extends "marcador/bookmark_list.html" %}
 
+<<<<<<< HEAD
 {% block title %}{{ owner.username }}'s bookmarks{% endblock %}
 
 {% block heading %}
     <h2>{{ owner.username }}'s bookmarks<br>
+=======
+{ % block title %}{{ onwer.username }}'s bookmarks{% endblock %}
+
+{% block heading %}
+    <h2>{{ onwer.username }}'s bookmarks<br>
+>>>>>>> 8f3bc7d5d952ddad0919aef39d02ae9024804aa0
     <small>{{ bookmarks.count }} bookmarks in total</small>
     </h2>
 {% endblock %}
