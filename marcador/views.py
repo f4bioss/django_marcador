@@ -30,13 +30,13 @@ def bookmark_create(request):
             bookmark.save()
             form.save_m2m()
             return redirect('marcador_bookmark_user', username=request.user.username)
-        else:
-            form = BookmarkForm()
-        context = {'form': form, 'create': True}
-        return render(request, 'marcador/form.html', context)
+    else:
+        form = BookmarkForm()
+    context = {'form': form, 'create': True}
+    return render(request, 'marcador/form.html', context)
 
 @login_required
-def bookmark_edit(request pk):
+def bookmark_edit(request, pk):
     bookmark = get_object_or_404(Bookmark, pk=pk)
     if bookmark.owner != request.user and not request.user.is_superuser:
         raise PermissionDenied
