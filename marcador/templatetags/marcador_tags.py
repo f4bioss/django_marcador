@@ -3,11 +3,16 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.html import format_html_join
 
+<<<<<<< HEAD
 from ..models import Tag
 
 
 register = template.Library()
 
+
+from .models import Tag
+
+register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def tagcloud(context, owner=None):
@@ -17,6 +22,7 @@ def tagcloud(context, owner=None):
     if owner is not None:
         url = reverse('marcador_bookmark_user',
             kwargs={'username': owner.username})
+        url = reverse('marcador_bookmark_user', kwargs={'username': owner.username})
         filters['bookmark__owner'] = owner
     if context['user'] == owner:
         del filters['bookmark__is_public']
@@ -26,3 +32,4 @@ def tagcloud(context, owner=None):
     tags = tags.order_by('name').values_list('name', 'count')
     fmt = '<a href="%s?tag={0}">{0} ({1})</a>' % url
     return format_html_join(', ', fmt, tags)
+
