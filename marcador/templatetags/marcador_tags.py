@@ -3,14 +3,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.html import format_html_join
 
-<<<<<<< HEAD
 from ..models import Tag
-
-
-register = template.Library()
-
-
-from .models import Tag
 
 register = template.Library()
 
