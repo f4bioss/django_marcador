@@ -8,6 +8,8 @@ from models import Bookmark
 
 def bookmark_list(request):
     bookmarks = Bookmark.public.all()
+    if request.GET.get('tag'):
+        bookmarks = bookmarks.filter(tags__name=request.GET['tag'])
     context = {'bookmarks': bookmarks}
     return render(request, 'marcador/bookmark_list.html', context)
 
@@ -17,6 +19,8 @@ def bookmark_user(request, username):
         bookmarks = user.bookmarks.all()
     else:
         bookmarks = Bookmark.public.filter(owner__username=username)
+    if  request.GET.get('tag'):
+        bookmarks = bookmarks.filter(tags__name=request.GET['tag'])
     context = {'bookmarks': bookmarks, 'owner': user}
     return render(request, 'marcador/bookmark_user.html', context)
 
